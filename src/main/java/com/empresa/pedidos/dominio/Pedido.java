@@ -59,4 +59,5 @@ public class Pedido {
     public void setEstado(EstadoPedido estado) {
         this.estado = estado;
     }
+    // Eliminado: método que introducía dependencia hacia infraestructura
 }
