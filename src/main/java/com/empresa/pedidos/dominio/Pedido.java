@@ -60,10 +60,5 @@ public class Pedido {
         this.estado = estado;
     }
 
-    // Metodo introducido intencionalmente para provocar una dependencia hacia infraestructura
-    @SuppressWarnings("unused")
-    public void introduceInfraDependency() {
-        com.empresa.pedidos.infraestructura.persistencia.PedidoEntity e = new com.empresa.pedidos.infraestructura.persistencia.PedidoEntity();
-        e.setId(this.id);
-    }
+    // Eliminado: método que introducía dependencia hacia infraestructura
 }
