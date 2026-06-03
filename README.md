@@ -101,6 +101,31 @@ Las capturas están en [capturas](capturas) y se incluyen aquí para documentar 
 - [PedidosIntegrationTest](src/test/java/com/empresa/pedidos/integracion/PedidosIntegrationTest.java): valida el flujo completo con `@SpringBootTest`.
 - [ArquitecturaCapasTest](src/test/java/com/empresa/pedidos/arquitectura/ArquitecturaCapasTest.java): valida reglas de dependencias con ArchUnit.
 
+## Validación Arquitectónica
+
+Se definen pruebas ejecutables con ArchUnit para asegurar que la arquitectura se cumple.
+Reglas principales implementadas en `src/test/java/com/empresa/pedidos/ReglasArquitectura.java`:
+
+- **Dominio aislado**: las clases en `..dominio..` no deben depender de `..infraestructura..`, `..adaptadores..`, `javax.persistence..` ni `org.springframework.mail..`.
+- **Controladores sólo acceden a la Facade**: las clases en `..adaptadores.rest..` solo pueden acceder a `..adaptadores.facade..`, `..dominio..`, `org.springframework.web..` y `java..`.
+- **Puertos como interfaces**: las clases en `..dominio.puertos..` deben ser interfaces.
+- **Procesadores implementan el puerto**: las clases en `..adaptadores.procesadores..` deben implementar `ProcesadorPedido`.
+- **Infraestructura no accede a REST**: las clases en `..infraestructura..` no deben acceder a `..adaptadores.rest..`.
+
+Ejecutar las pruebas de arquitectura:
+
+```bash
+mvn test -Dtest=ReglasArquitectura
+```
+
+Salida esperada (sin violaciones):
+
+```
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0
+```
+
+Si se detecta una violación, ArchUnit imprime el detalle indicando qué clase y método incumplen la regla. El workflow de GitHub Actions (`.github/workflows/arquitectura.yml`) ejecuta estas pruebas en cada push a `main` y `develop`.
+
 ## Ejecución local
 
 Compila y prueba con:
