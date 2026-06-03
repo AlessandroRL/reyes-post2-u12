@@ -92,6 +92,14 @@ Las capturas están en [capturas](capturas) y se incluyen aquí para documentar 
 
 ![SonarQube después cobertura](capturas/07-after-coverage.png)
 
+## Evidencias del pipeline CI (GitHub Actions)
+
+Aquí se muestran capturas del estado del pipeline en dos momentos: ejecución fallida (rojo) usada para demostrar la detección de la violación arquitectónica, y la ejecución exitosa (verde) tras corregirla.
+
+![Pipeline CI - Rojo](capturas/08-pipeline-rojo.png)
+
+![Pipeline CI - Verde](capturas/09-pipeline-verde.png)
+
 ## Pruebas
 
 - [ProcesadorPedidosTest](src/test/java/com/empresa/pedidos/adaptadores/procesadores/ProcesadorPedidosTest.java): valida Strategy.
