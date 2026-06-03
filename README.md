@@ -146,4 +146,4 @@ mvn clean verify sonar:sonar -Dsonar.projectKey=pedidos-integrado -Dsonar.host.u
 
 ## Estructura de evidencias
 
-La carpeta [capturas](capturas) contiene las imágenes PNG del análisis de SonarQube. Si agregas más evidencias, conserva nombres descriptivos y ordenados para mantener el antes y después claro.
+La carpeta [capturas](capturas) contiene las imágenes PNG del análisis de SonarQube.
